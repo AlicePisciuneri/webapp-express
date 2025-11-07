@@ -28,3 +28,42 @@ Verifica finale
 Database visibile in “Schemas”
 Tabelle correttamente importate
 Query SELECT * FROM movies; restituisce i film
+
+
+---
+
+## Step 2 — Creazione dell'applicazione Express
+
+**Obiettivo:** creare il server Express di base per la Movies App.
+
+### Procedura
+1. Creata una nuova cartella chiamata express-movies-app.
+2. Inizializzato il progetto con:
+   bash
+   npm init -y
+
+npm install express
+
+Creato il file principale server.js con il seguente codice base:
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+    res.send("Welcome in my Movies App");
+});
+
+app.listen(port, () => {
+    console.log("Server avviato su http://localhost:3000");
+});
+
+Avviato il server con:
+node server.js
+
+Aperto il browser su http://localhost:3000 = risposta corretta:
+
+Welcome in my Movies App 
+Verifica finale
+Server Express attivo sulla porta 3000
+Rotta di test / funzionante
+Messaggio visibile nel browser
