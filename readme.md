@@ -67,3 +67,32 @@ Verifica finale
 Server Express attivo sulla porta 3000
 Rotta di test / funzionante
 Messaggio visibile nel browser
+
+## Prepariamo una rotta index per ottenere la lista dei film,
+Connessione al database e API “Index”
+
+# Obiettivo:
+Collegare l’app Express al database movies_db e creare la prima API /movies per mostrare tutti i film.
+
+Passaggi completati:
+Creata la cartella config e il file db.js con la connessione a MySQL tramite mysql2.
+Testata la connessione: “Connessione al database riuscita!”
+Creata la cartella routes e il file movieRoutes.js per gestire le rotte dei film.
+scritta la query SQL:
+
+SELECT * FROM movies;
+Collegata la rotta al server con:
+
+const movieRoutes = require("./routes/movieRoutes");
+app.use("/movies", movieRoutes);
+
+
+Testata l’API con Postman:
+Metodo: GET
+
+Endpoint: http://localhost:3000/movies
+Risposta corretta in formato JSON con tutti i film presenti nel database.
+
+Risultato finale:
+L’app comunica correttamente con MySQL, e la rotta /movies restituisce la lista completa dei film.
+(Postman mostra correttamente i dati, mentre il browser non li visualizza perché si tratta di JSON.)
