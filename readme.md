@@ -96,3 +96,32 @@ Risposta corretta in formato JSON con tutti i film presenti nel database.
 Risultato finale:
 L’app comunica correttamente con MySQL, e la rotta /movies restituisce la lista completa dei film.
 (Postman mostra correttamente i dati, mentre il browser non li visualizza perché si tratta di JSON.)
+
+### Rotta SHOW per singolo film
+
+Ho aggiunto una nuova rotta **GET** per ottenere i dettagli di un singolo film dal database.
+
+**Percorso:**  
+GET /movies/:id`
+
+**Funzionamento:**  
+- L’id viene preso direttamente dall’URL (es. /movies/3` restituisce il film con id = 3).  
+- La query SQL cerca il film corrispondente:  
+  sql
+  SELECT * FROM movies WHERE id = ?;
+  Se il film esiste → viene restituito in formato JSON.
+
+Se non esiste  viene restituito un errore 404 con messaggio "Film non trovato".
+
+In caso di errore nel server viene restituito un errore 500.
+
+Esempio di risposta:
+
+{
+  "id": 3,
+  "title": "The Dark Knight",
+  "director": "Christopher Nolan",
+  "year": 2008
+}
+Testata con Postman e sul browser , funziona correttamente sia per ID validi che non validi.
+
