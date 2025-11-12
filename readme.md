@@ -125,3 +125,40 @@ Esempio di risposta:
 }
 Testata con Postman e sul browser , funziona correttamente sia per ID validi che non validi.
 
+### Middleware e gestione errori
+
+In questa fase ho implementato due middleware globali per migliorare la gestione delle richieste e degli errori:
+
+Middleware 404 – notFound
+
+Intercetta tutte le richieste verso rotte inesistenti.
+
+Restituisce un messaggio JSON chiaro con stato 404.
+
+app.use((req, res) => {
+  res.status(404).json({ error: "Risorsa non trovata" });
+});
+
+
+## Middleware 500 –
+
+Gestisce errori interni del server o query non riuscite.
+
+Restituisce un messaggio JSON con stato 500.
+
+app.use((err, req, res, next) => {
+  console.error("Errore interno:", err.message);
+  res.status(500).json({ error: "Errore del server" });
+});
+
+
+## Middleware 404 – notFound
+
+Intercetta tutte le richieste verso rotte inesistenti.
+
+Restituisce un messaggio JSON chiaro con stato 404.
+
+app.use((req, res) => {
+  res.status(404).json({ error: "Risorsa non trovata" });
+});
+
